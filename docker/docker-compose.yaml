@@ -1,0 +1,27 @@
+name: ros2-test
+
+services:
+  ros2-test:
+    environment:
+      - ros2-test
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    #deploy:
+    #  resources:
+    #    limits:
+    #      cpus: '0.001'
+    #      memory: 500M
+    #    reservations:
+    #      cpus: '0.0001'
+    #      memory: 100M
+    # environment:
+    #   - DISPLAY                              # Req'd for RViz
+    # privileged: true                         # Req'd for RViz and USB hardware
+    # volumes:                                 # Req'd for RViz
+    #   - $XAUTHORITY:/root/.Xauthority        # Req'd for RViz
+    network_mode: host
+    ipc: host
+    command: sleep infinity
+    #command: ros2 launch my_package init.launch.py
+    #restart: unless-stopped
